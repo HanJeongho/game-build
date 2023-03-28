@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - '/opt/unity/Editor/Unity -quit -logFile /dev/stdout -manualLicenseFile Unity_v2021.x.ulf -nographics -batchmode; EXITCODE=$?'
+  build:
+    commands:
+      - '/opt/unity/Editor/Unity -batchmode -nographics -logFile /dev/BuildAndroid.log -buildTarget Android -projectPath myproject -executeMethod BuildPlayer.BuildAndroid -quit'
+  post_build:
+    commands:
+artifacts:
+  files:
+    - '/dev/BuildAndroid.log'
+    - 'myproject/Builds/test.apk'
+    - 'index.html'

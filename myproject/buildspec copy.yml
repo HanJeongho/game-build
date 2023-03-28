@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+  build:
+    commands:
+      - /opt/unity/Editor/Unity -batchmode -nographics -serial SC-DJBK-TDG5-FNSA-BQ3D-MP5R -username 'jh.han219@gmail.com' -password 'Test12345!' -logFile /dev/BuildAndroid.log -buildTarget Android -projectPath myproject -executeMethod BuildPlayer.BuildAndroid -quit
+  post_build:
+    commands:
+      - /opt/unity/Editor/Unity -quit -batchmode -returnlicense -username 'jh.han219@gmail.com' -password 'Test12345!'
+artifacts:
+  files:
+    - '/dev/BuildAndroid.log'
+    - '/myproject/Builds/test.apk'
+    - 'myproject/Builds/test.apk'
+    - 'Builds/test.apk'
+    - 'test.apk'
